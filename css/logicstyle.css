@@ -1,0 +1,128 @@
+@charset "UTF-8";
+/*
+ Logic Editor CSS code
+ University of Pittsburgh IS2470 Fall 2017
+ Jeffrey James, Chakra Neopaney, Sanika Athaley, Wennong Song, John Falconi
+*/
+
+body {
+	background-color: #9099a2;
+}
+/* Style the tab */
+div.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #535d72;
+	border-radius: 0px;
+}
+/*table content*/
+.mce-toc {
+    border: 1px solid gray;
+    font-size: 20pt;
+}
+.mce-toc h2 {
+    margin: 4px;
+    font-size: 40px;
+}
+
+.mce-toc li {
+    list-style-type: none;
+    font-size: 40px;
+}
+/* Style the buttons inside the tab */
+div.tab button {
+	font-family: "Arial Black", Gadget, sans-serif;
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 22px;
+	color: #bababa;
+}
+/* Change background color of buttons on hover */
+div.tab button:hover {
+	background-color: #D5D5D5;
+	color: #7c7c7c;
+}
+/* Create an active/current tab */
+div.tab button.active {
+	font-family: "Arial Black", Gadget, sans-serif;
+	background-color: #6d7993;
+	color: #fff;
+}
+/* Style the tab content */
+div.tabcontent {
+	background-color: #6d7993;
+	font-family: Arial, Helvetica, sans-serif;
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	color: #fff;
+}
+
+div #tabhd {
+	border-radius: 0px;
+}
+
+div #newtab{
+	background-color: #e0af1a; /*#bf9415;*/
+	color: #595959;
+	border-radius: 0px;
+}
+div #newtab:hover {
+	background-color: #b28b13;
+	color: #fff;
+}
+/* Style the save/download button */
+div #save {
+	border: 1px solid #0a3c59;
+	background: #6bbaa7;
+	padding: 7px 15px;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	border-radius: 9px;
+	-webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset
+		rgba(255, 255, 255, 0.4) 0 1px 0;
+	-moz-box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset
+		rgba(255, 255, 255, 0.4) 0 1px 0;
+	box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0, inset
+		rgba(255, 255, 255, 0.4) 0 1px 0;
+	color: #fff;
+	font-size: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+div #save:hover {
+	cursor: pointer;
+	border: 1px solid #0a3c59;
+	text-shadow: #1e4158 0 1px 0;
+	background: #579989;
+	color: #fff;
+}
+
+div #save:active {
+	text-shadow: #1e4158 0 1px 0;
+	border: 1px solid #0a3c59;
+	background: #579989;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#579989));
+	background: -webkit-linear-gradient(top, #3e779d, #579989);
+	background: -moz-linear-gradient(top, #3e779d, #579989);
+	background: -ms-linear-gradient(top, #3e779d, #579989);
+	background: -o-linear-gradient(top, #3e779d, #579989);
+	background-image: -ms-linear-gradient(top, #3e779d 0%, #579989 100%);
+	color: #fff;
+}
+
+div #save:focus {
+	outline: 0;
+}
+
+
+
+

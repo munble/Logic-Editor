@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<!--
+Logic Editor web application
+University of Pittsburgh IS2470 Fall 2017
+Jeffrey James, Chakra Neopaney, Sanika Athaley, Wennong Song, John Falconi
+-->
+
+<head>
+	<meta charset="UTF-8">
+	<title>Logic Editor</title>
+	
+	<!-- javascript -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/saveorcopy.js"></script>
+	<script type="text/javascript" src="js/html2canvas.js"></script>
+	<script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
+<!--	<script type="text/javascript" src="plugin/tinymce/init-tinymce-t.js"></script>-->
+	<script type="text/javascript" src="plugin/tinymce/init-tinymce-p.js"></script>
+    <script type="text/javascript" src="plugin/tinymce/init-tinymce-nt.js"></script>    
+    <script type="text/javascript" src="plugin/tinymce/init-tinymce-s.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/logicstyle.css">
+    
+    
+    <script>
+function copyToClipboard(text) {
+if (window.clipboardData && window.clipboardData.setData) {
+    // IE specific code path to prevent textarea being shown while dialog is visible.
+    return clipboardData.setData("Text", text); 
+
+} else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+    var textarea = document.createElement("textarea");
+    textarea.textContent = text;
+    textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+        return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+    } catch (ex) {
+        console.warn("Copy to clipboard failed.", ex);
+        return false;
+    } finally {
+        document.body.removeChild(textarea);
+    }
+}}
+</script>
+</head>
+
+<body>
+	<div class="tab">
+		<button id="tabhd" class="tablinks" onclick="openTab(event, 'TruthTableTab')">Truth Table</button>
+		<button id="tabhd" class="tablinks" onclick="openTab(event, 'ProofTab')">Proof</button>
+        <button id="tabhd" class="tablinks" onclick="openTab(event, 'StatementTab')">Statement</button>
+		<button id="newtab" class="newtab" onclick="window.open('.','_blank')" style="float: right;">New Tab</button>
+	</div>
+	<div id="TruthTableTab" class="tabcontent">
+		<textarea id="TruthTable"  style="font-size: 30px;">
+
+		</textarea>
+		<div style="line-height:35%";><br></div>
+		Save As:
+		<input id="inputFileNameToSaveAsT" value="Truth_Table"></input>
+		<button id="save" onclick="takeScreenshot_T()">Download</button>
+		<button id="save" class="test" style="float: right;">Copy HTML Code</button>
+		<br>
+	</div>
+	<div id="ProofTab" class="tabcontent">
+		<textarea id="Proof">
+  			<table style="width: 100%; text-align: left; border-collapse: collapse; border: none;">
+    				<tbody>
+    					<tr>
+    						<td style="font-size: 15px;">1.</td>
+        					<td style="font-size: 15px;">(<i>Statement</i>)</td>
+        					<td style="font-size: 15px;">(Justification)</td>
+    					</tr>
+      			</tbody>
+			</table>
+  		</textarea>
+  		<div style="line-height:35%";><br></div>
+		Save As:
+		<input id="inputFileNameToSaveAsP" value="Proof"></input>
+		<button id="save" onclick="takeScreenshot_P()">Download</button>
+		<button id="save" class="test"  style="float: right;">Copy HTML Code</button>
+		<br>
+  	</div>
+<div id="StatementTab" class="tabcontent">
+		<textarea id="Statement">
+  			
+  		</textarea>
+  		<div style="line-height:35%";><br></div>
+		Save As:
+		<input id="inputFileNameToSaveAsS" value="Statement"></input>
+		<button id="save" onclick="takeScreenshot_S()">Download</button>
+		<button id="save" class="test" style="float: right;">Copy HTML Code</button>
+		<br>
+  	</div>
+  	
+	<script>
+	document.getElementsByClassName('tablinks')[0].click()
+	function openTab(evt, tabName) {
+    		var i, tabcontent, tablinks;
+    		tabcontent = document.getElementsByClassName("tabcontent");
+    		for (i = 0; i < tabcontent.length; i++) {
+        		tabcontent[i].style.display = "none";
+    		}
+    		tablinks = document.getElementsByClassName("tablinks");
+    		for (i = 0; i < tablinks.length; i++) {
+        		tablinks[i].className = tablinks[i].className.replace(" active", "");
+    		}
+    		document.getElementById(tabName).style.display = "block";
+    		evt.currentTarget.className += " active";
+	}
+	</script>
+<script>
+	$('.test').on('click', function() {
+    var text = tinyMCE.activeEditor.getContent()
+    copyToClipboard(text);
+    jQuery('.xyz').attr('value', text);
+	alert("Copied to clipboard!\n\nClick \"HTML\" button in CourseWeb and paste: (Ctrl+V or Cmd+V)");
+	});
+	
+	</script>
+
+</body>
+</html>
